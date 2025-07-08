@@ -1,0 +1,21 @@
+[Unit]
+Description=Start CAN Sender via Script
+After=network.target
+Wants=network-online.target  # 确保网络完全就绪后启动
+
+[Service]
+Type=forking
+User=root
+Group=root
+WorkingDirectory=/home/sunrise/ros2_nav/rplidar_ws
+ExecStart=/home/sunrise/ros2_nav/rplidar_ws/start_can_sender.sh
+ExecStop=/bin/bash -c "sudo ip link set can1 down; pkill -f 'ros2 run can_bridge_cpp can_sender'"
+Restart=on-failure
+RestartSec=5
+TimeoutStartSec=30
+TimeoutStopSec=10
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

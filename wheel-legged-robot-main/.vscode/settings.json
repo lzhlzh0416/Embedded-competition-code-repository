@@ -1,0 +1,11 @@
+{
+    "task.autoDetect": "off",
+    "cmake.configureOnOpen": true,
+    "files.associations": {
+        "cmath": "cpp"
+    },
+    // "editor.formatOnSave": true,
+    // "[c]": {
+    //     "editor.formatOnSave": false
+    // }
+}
